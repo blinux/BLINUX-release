@@ -40,9 +40,14 @@ Provides:       product()
 Provides:       product(BLINUX) = %version-%release
 Requires:       product_flavor(BLINUX)
 
+BuildArch:	noarch
 AutoReqProv:    on
 Summary:        BLINUX
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+Packager:       Emmanuel Vadot <elbarto@bocal.org>
+Url:            http://www.blinux.fr
+
 %define codename Chartreuse Curly
 
 %description
@@ -55,6 +60,11 @@ Provides:       product_flavor()
 Provides:       flavor(ftp)
 Provides:       product_flavor(BLINUX) = 2.0-%{release}
 Summary:        BLINUX
+
+BuildArch:	noarch
+
+Packager:       Emmanuel Vadot <elbarto@bocal.org>
+Url:            http://www.blinux.fr
 
 %description ftp
 BLINUX is a branding of the openSUSE distribution.
@@ -103,3 +113,7 @@ EOF
 %config(noreplace) /etc/motd
 %config(noreplace) /etc/issue
 %config(noreplace) /etc/issue.net
+
+%changelog
+* Thu Aug 07 2014 Emmanuel Vadot <elbarto@bocal.org> - 2.0
+- Package creation
