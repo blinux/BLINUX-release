@@ -23,8 +23,9 @@
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-Name:           BLINUX-release
 %define product BLINUX
+
+Name:           BLINUX-release
 License:        BSD-2-Clause
 Group:          System/Fhs
 Version:        2.0
@@ -34,11 +35,12 @@ Provides:       suse-release-oss = %{version}-%{release}
 Provides:       suse-release = %{version}-%{release}
 Conflicts:      openSUSE-release
 
-Recommends:     branding-BLINUX
 Provides:       %name-%version
 Provides:       product()
 Provides:       product(BLINUX) = %version-%release
 Requires:       product_flavor(BLINUX)
+Requires:	branding-BLINUX
+Requires:	patterns-BLINUX
 
 BuildArch:	noarch
 AutoReqProv:    on
