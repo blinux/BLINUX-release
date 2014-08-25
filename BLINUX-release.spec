@@ -89,7 +89,11 @@ echo VERSION = %{version} >> %{buildroot}/etc/SuSE-release
 echo CODENAME = %{codename} >> %{buildroot}/etc/SuSE-release
 echo "# /etc/SuSE-release is deprecated and will be removed in the future, use /etc/os-release instead" >> %{buildroot}/etc/SuSE-release
 
-echo NAME=BLINUX > %{buildroot}/etc/os-release
+if `hostname` == 'exam'; then
+    echo NAME=\"BLINUX EXAM\" > %{buildroot}/etc/os-release
+else
+    echo NAME=\"BLINUX STD\" > %{buildroot}/etc/os-release
+fi
 echo VERSION=\""%{version} (%{codename})"\" >> %{buildroot}/etc/os-release
 echo VERSION_ID=\"`echo %{version}|tr '[:upper:]' '[:lower:]'`\"|sed -e 's/ //g;' >> %{buildroot}/etc/os-release
 echo PRETTY_NAME=\"BLINUX %{version} "(%{codename}) (%{_target_cpu})\""  >> %{buildroot}/etc/os-release
@@ -97,7 +101,7 @@ echo ID=blinux >> %{buildroot}/etc/os-release
 echo ANSI_COLOR=\"0\;32\" >> %{buildroot}/etc/os-release
 echo CPE_NAME=\"cpe:/o:blinux:blinux:%{version}\" >> %{buildroot}/etc/os-release
 echo 'BUG_REPORT_URL="http://intra.bocal.org"' >> %{buildroot}/etc/os-release
-echo 'HOME_URL="http://blinux.fr/"' >> %{buildroot}/etc/os-release
+echo 'HOME_URL="http://www.blinux.fr/"' >> %{buildroot}/etc/os-release
 echo 'ID_LIKE="suse"' >> %{buildroot}/etc/os-release
 
 echo "Have a lot of fun..." > %{buildroot}/etc/motd
