@@ -29,7 +29,7 @@ Name:           BLINUX-release
 License:        BSD-2-Clause
 Group:          System/Fhs
 Version:        2.0
-Release:        1
+Release:        2
 Provides:       aaa_version distribution-release
 Provides:       suse-release-oss = %{version}-%{release}
 Provides:       suse-release = %{version}-%{release}
@@ -49,6 +49,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Packager:       Emmanuel Vadot <elbarto@bocal.org>
 Url:            http://www.blinux.fr
+Vendor:		Blinux
 
 %define codename Chartreuse Curly
 
