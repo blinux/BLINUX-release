@@ -49,6 +49,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Packager:       Emmanuel Vadot <elbarto@bocal.org>
 Url:            http://www.blinux.fr
+Vendor:		Blinux
 
 %define codename Chartreuse Curly
 
