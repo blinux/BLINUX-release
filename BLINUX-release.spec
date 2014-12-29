@@ -29,7 +29,7 @@ Name:           BLINUX-release
 License:        BSD-2-Clause
 Group:          System/Fhs
 Version:        2.0
-Release:        1
+Release:        2
 Provides:       aaa_version distribution-release
 Provides:       suse-release-oss = %{version}-%{release}
 Provides:       suse-release = %{version}-%{release}
@@ -49,6 +49,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Packager:       Emmanuel Vadot <elbarto@bocal.org>
 Url:            http://www.blinux.fr
+Vendor:		Blinux
 
 %define codename Chartreuse Curly
 
@@ -67,6 +68,7 @@ BuildArch:	noarch
 
 Packager:       Emmanuel Vadot <elbarto@bocal.org>
 Url:            http://www.blinux.fr
+Vendor:		Blinux
 
 %description ftp
 BLINUX is a branding of the openSUSE distribution.
@@ -84,7 +86,11 @@ mkdir -p %{buildroot}/etc
 echo -e 'Welcome to %{product} %{version} "%{codename}" - Kernel \\r (\\l).\n\n' > %{buildroot}/etc/issue
 echo 'Welcome to %{product} %{version} "%{codename}" - Kernel %%r (%%t).' > %{buildroot}/etc/issue.net
 
-echo "%{product} %{version} (%{_target_cpu})" > %{buildroot}/etc/SuSE-release
+if `hostname` == 'exam'; then
+    echo "%{product} %{version} EXAM" > %{buildroot}/etc/SuSE-release
+else
+    echo "%{product} %{version} STD" > %{buildroot}/etc/SuSE-release
+fi
 echo VERSION = %{version} >> %{buildroot}/etc/SuSE-release
 echo CODENAME = %{codename} >> %{buildroot}/etc/SuSE-release
 echo "# /etc/SuSE-release is deprecated and will be removed in the future, use /etc/os-release instead" >> %{buildroot}/etc/SuSE-release
@@ -96,7 +102,7 @@ else
 fi
 echo VERSION=\""%{version} (%{codename})"\" >> %{buildroot}/etc/os-release
 echo VERSION_ID=\"`echo %{version}|tr '[:upper:]' '[:lower:]'`\"|sed -e 's/ //g;' >> %{buildroot}/etc/os-release
-echo PRETTY_NAME=\"BLINUX %{version} "(%{codename}) (%{_target_cpu})\""  >> %{buildroot}/etc/os-release
+echo PRETTY_NAME=\"BLINUX %{version} "(%{codename})\""  >> %{buildroot}/etc/os-release
 echo ID=blinux >> %{buildroot}/etc/os-release
 echo ANSI_COLOR=\"0\;32\" >> %{buildroot}/etc/os-release
 echo CPE_NAME=\"cpe:/o:blinux:blinux:%{version}\" >> %{buildroot}/etc/os-release
