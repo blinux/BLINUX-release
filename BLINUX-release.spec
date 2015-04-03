@@ -29,7 +29,7 @@ Name:           BLINUX-release
 License:        BSD-2-Clause
 Group:          System/Fhs
 Version:        2.0
-Release:        2
+Release:        3
 Provides:       aaa_version distribution-release
 Provides:       suse-release-oss = %{version}-%{release}
 Provides:       suse-release = %{version}-%{release}
