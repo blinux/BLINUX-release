@@ -29,7 +29,7 @@ Name:           BLINUX-release
 License:        BSD-2-Clause
 Group:          System/Fhs
 Version:        2.0
-Release:        2
+Release:        3
 Provides:       aaa_version distribution-release
 Provides:       suse-release-oss = %{version}-%{release}
 Provides:       suse-release = %{version}-%{release}
@@ -56,27 +56,6 @@ Vendor:		Blinux
 %description
 BLINUX is a branding of the openSUSE distribution.
 
-%package ftp
-License:        BSD-2-Clause
-Group:          System/Fhs
-Provides:       product_flavor()
-Provides:       flavor(ftp)
-Provides:       product_flavor(BLINUX) = 2.0-%{release}
-Summary:        BLINUX
-
-BuildArch:	noarch
-
-Packager:       Emmanuel Vadot <elbarto@bocal.org>
-Url:            http://www.blinux.fr
-Vendor:		Blinux
-
-%description ftp
-BLINUX is a branding of the openSUSE distribution.
-
-%files ftp
-%defattr(-,root,root)
-%doc %{_defaultdocdir}/BLINUX-release-ftp
-
 %prep
 
 %build
@@ -86,7 +65,7 @@ mkdir -p %{buildroot}/etc
 echo -e 'Welcome to %{product} %{version} "%{codename}" - Kernel \\r (\\l).\n\n' > %{buildroot}/etc/issue
 echo 'Welcome to %{product} %{version} "%{codename}" - Kernel %%r (%%t).' > %{buildroot}/etc/issue.net
 
-if `hostname` == 'exam'; then
+if [ `hostname` = 'exam' ]; then
     echo "%{product} %{version} EXAM" > %{buildroot}/etc/SuSE-release
 else
     echo "%{product} %{version} STD" > %{buildroot}/etc/SuSE-release
@@ -95,7 +74,7 @@ echo VERSION = %{version} >> %{buildroot}/etc/SuSE-release
 echo CODENAME = %{codename} >> %{buildroot}/etc/SuSE-release
 echo "# /etc/SuSE-release is deprecated and will be removed in the future, use /etc/os-release instead" >> %{buildroot}/etc/SuSE-release
 
-if `hostname` == 'exam'; then
+if [ `hostname` = 'exam' ]; then
     echo NAME=\"BLINUX EXAM\" > %{buildroot}/etc/os-release
 else
     echo NAME=\"BLINUX STD\" > %{buildroot}/etc/os-release
@@ -112,11 +91,35 @@ echo 'ID_LIKE="suse"' >> %{buildroot}/etc/os-release
 
 echo "Have a lot of fun..." > %{buildroot}/etc/motd
 
-mkdir -p %{buildroot}/%{_defaultdocdir}/BLINUX-release-ftp
-cat >%{buildroot}/%{_defaultdocdir}/BLINUX-release-ftp/README << EOF
-This package only exists for providing the product flavor 'ftp'.
+%post
+echo -e 'Welcome to %{product} %{version} "%{codename}" - Kernel \\r (\\l).\n\n' > /etc/issue
+echo 'Welcome to %{product} %{version} "%{codename}" - Kernel %%r (%%t).' > /etc/issue.net
 
-EOF
+if [ `hostname` = 'exam' ]; then
+    echo "%{product} %{version} EXAM" > /etc/SuSE-release
+else
+    echo "%{product} %{version} STD" > /etc/SuSE-release
+fi
+echo VERSION = %{version} >> /etc/SuSE-release
+echo CODENAME = %{codename} >> /etc/SuSE-release
+echo "# /etc/SuSE-release is deprecated and will be removed in the future, use /etc/os-release instead" >> /etc/SuSE-release
+
+if [ `hostname` = 'exam' ]; then
+    echo NAME=\"BLINUX EXAM\" > /etc/os-release
+else
+    echo NAME=\"BLINUX STD\" > /etc/os-release
+fi
+echo VERSION=\""%{version} (%{codename})"\" >> /etc/os-release
+echo VERSION_ID=\"`echo %{version}|tr '[:upper:]' '[:lower:]'`\"|sed -e 's/ //g;' >> /etc/os-release
+echo PRETTY_NAME=\"BLINUX %{version} "(%{codename})\""  >> /etc/os-release
+echo ID=blinux >> /etc/os-release
+echo ANSI_COLOR=\"0\;32\" >> /etc/os-release
+echo CPE_NAME=\"cpe:/o:blinux:blinux:%{version}\" >> /etc/os-release
+echo 'BUG_REPORT_URL="http://intra.bocal.org"' >> /etc/os-release
+echo 'HOME_URL="http://www.blinux.fr/"' >> /etc/os-release
+echo 'ID_LIKE="suse"' >> /etc/os-release
+
+echo "Have a lot of fun..." > /etc/motd
 
 %files
 %defattr(644,root,root,755)
