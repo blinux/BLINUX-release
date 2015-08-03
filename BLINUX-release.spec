@@ -28,8 +28,8 @@
 Name:           BLINUX-release
 License:        BSD-2-Clause
 Group:          System/Fhs
-Version:        2.0
-Release:        3
+Version:        3.0
+Release:        0
 Provides:       aaa_version distribution-release
 Provides:       suse-release-oss = %{version}-%{release}
 Provides:       suse-release = %{version}-%{release}
@@ -51,7 +51,7 @@ Packager:       Emmanuel Vadot <elbarto@bocal.org>
 Url:            http://www.blinux.fr
 Vendor:		Blinux
 
-%define codename Chartreuse Curly
+%define codename Daiquiri Doritos
 
 %description
 BLINUX is a branding of the openSUSE distribution.
@@ -130,5 +130,8 @@ echo "Have a lot of fun..." > /etc/motd
 %config(noreplace) /etc/issue.net
 
 %changelog
+* Mon Aug 03 2015 Emmanuel Vadot <elbarto@bocal.org> - 3.0
+- Update to 3.0
+
 * Thu Aug 07 2014 Emmanuel Vadot <elbarto@bocal.org> - 2.0
 - Package creation
