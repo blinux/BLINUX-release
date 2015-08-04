@@ -1,2 +1,6 @@
-install: sudo apt-get install rpm
+addons:
+  apt:
+    packages:
+    - rpm
+sudo: false
 script: rpmbuild -bb BLINUX-release.spec
