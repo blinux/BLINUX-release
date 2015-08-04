@@ -1,14 +1,14 @@
 language: python
 
-python: 3.4
-
 addons:
   apt:
     packages:
     - rpm
 
-before_install:
-  - pip install rpmlint
+before_script:
+  - wget https://github.com/rpm-software-management/rpmlint/archive/rpmlint-1.7.tar.gz -O /tmp/rpmlint.tar.gz
+  - tar -xzf /tmp/rpmlint.tar.gz
+  - export PATH=$PATH:$PWD/rpmlint-rpmlint-1.7/
 
 sudo: false
 script: ./build.sh
