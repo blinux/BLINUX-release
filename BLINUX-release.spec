@@ -1,5 +1,5 @@
 #-
-# Copyright 2014 Emmanuel Vadot <elbarto@bocal.org>
+# Copyright 2014-2015 Emmanuel Vadot <elbarto@bocal.org>
 # All rights reserved
 #
 # Redistribution and use in source and binary forms, with or without
@@ -85,7 +85,7 @@ echo PRETTY_NAME=\"BLINUX %{version} "(%{codename})\""  >> %{buildroot}/etc/os-r
 echo ID=blinux >> %{buildroot}/etc/os-release
 echo ANSI_COLOR=\"0\;32\" >> %{buildroot}/etc/os-release
 echo CPE_NAME=\"cpe:/o:blinux:blinux:%{version}\" >> %{buildroot}/etc/os-release
-echo 'BUG_REPORT_URL="http://intra.bocal.org"' >> %{buildroot}/etc/os-release
+echo 'BUG_REPORT_URL="https://github.com/blinux"' >> %{buildroot}/etc/os-release
 echo 'HOME_URL="http://www.blinux.fr/"' >> %{buildroot}/etc/os-release
 echo 'ID_LIKE="suse"' >> %{buildroot}/etc/os-release
 
