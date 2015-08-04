@@ -1,2 +1,0 @@
-install: sudo apt-get install rpmbuild
-script: rpmbuild -bb BLINUX-release.spec
