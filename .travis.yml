@@ -7,6 +7,4 @@ before_install:
   - pip install rpmlint
 
 sudo: false
-script:
-  - rpmbuild -bb BLINUX-release.spec | tee build.log
-  - rpmlint --info `grep "Wrote: " build.log | awk '{print $2}'`
+script: ./build.sh
