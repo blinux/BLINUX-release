@@ -1,0 +1,2 @@
+install: rpm-build
+script: rpmbuild -bb BLINUX-release.spec
