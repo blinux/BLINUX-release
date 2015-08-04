@@ -8,7 +8,8 @@ addons:
 before_script:
   - wget https://github.com/rpm-software-management/rpmlint/archive/rpmlint-1.7.tar.gz -O /tmp/rpmlint.tar.gz
   - tar -xzf /tmp/rpmlint.tar.gz
-  - cd rpmlint-rpmlint-1.7 && make install
+  - cd rpmlint-rpmlint-1.7 && sudo make install
 
-sudo: false
+sudo: required
+
 script: sh ./build.sh
