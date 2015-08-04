@@ -11,4 +11,4 @@ before_script:
   - export PATH=$PATH:$PWD/rpmlint-rpmlint-1.7/
 
 sudo: false
-script: ./build.sh
+script: sh ./build.sh
