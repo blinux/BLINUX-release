@@ -12,4 +12,6 @@ before_script:
 
 sudo: required
 
-script: sh ./build.sh
+script:
+  - rpmbuild -bb BLINUX-release.spec
+  - find $HOME/rpmbuild -name \*.rpm -exec rpmlint --info {}\;
